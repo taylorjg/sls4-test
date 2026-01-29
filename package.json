@@ -8,7 +8,8 @@
     "info": "serverless info",
     "invoke": "serverless invoke -f hello",
     "invoke:local": "serverless invoke local -f hello",
-    "remove": "serverless remove"
+    "remove": "serverless remove",
+    "logs": "serverless logs --function hello"
   },
   "devDependencies": {
     "serverless": "^4"
