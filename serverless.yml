@@ -1,0 +1,16 @@
+service: sls4-test
+
+provider:
+  name: aws
+  profile: taylorjg
+  runtime: nodejs22.x
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'us-east-1'}
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http:
+          path: /hello
+          method: get

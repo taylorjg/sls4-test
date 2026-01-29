@@ -1,0 +1,16 @@
+{
+  "name": "sls4-test",
+  "version": "1.0.0",
+  "description": "Test Lambda function using Serverless Framework v4",
+  "type": "module",
+  "scripts": {
+    "deploy": "serverless deploy",
+    "info": "serverless info",
+    "invoke": "serverless invoke -f hello",
+    "invoke:local": "serverless invoke local -f hello",
+    "remove": "serverless remove"
+  },
+  "devDependencies": {
+    "serverless": "^4"
+  }
+}
