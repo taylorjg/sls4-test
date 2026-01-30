@@ -4,24 +4,24 @@ import assert from "node:assert";
 // Set env var BEFORE importing the handler
 process.env.TFGM_API_URL = "https://apiary.tfgm.com";
 
-const { getTransportModes } = await import("../src/handler.js");
+const { handler } = await import("../src/get-transport-modes.js");
 
 describe("getTransportModes integration", () => {
   it("should return 200 status code", async () => {
-    const response = await getTransportModes();
+    const response = await handler();
 
     assert.strictEqual(response.statusCode, 200);
   });
 
   it("should return valid JSON body", async () => {
-    const response = await getTransportModes();
+    const response = await handler();
     const body = JSON.parse(response.body);
 
     assert.ok(body.transportModes, "Response should contain transportModes");
   });
 
   it("should return transport modes as an array", async () => {
-    const response = await getTransportModes();
+    const response = await handler();
     const body = JSON.parse(response.body);
 
     assert.ok(
@@ -31,7 +31,7 @@ describe("getTransportModes integration", () => {
   });
 
   it("should return transport modes with services", async () => {
-    const response = await getTransportModes();
+    const response = await handler();
     const body = JSON.parse(response.body);
     const transportModes = body.transportModes;
 
@@ -45,7 +45,7 @@ describe("getTransportModes integration", () => {
   });
 
   it("should return services with expected structure", async () => {
-    const response = await getTransportModes();
+    const response = await handler();
     const body = JSON.parse(response.body);
     const transportModes = body.transportModes;
 

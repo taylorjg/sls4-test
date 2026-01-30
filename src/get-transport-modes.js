@@ -3,7 +3,7 @@ import { GetTransportModes } from "./queries.js";
 
 const { TFGM_API_URL } = process.env;
 
-export const getTransportModes = async () => {
+export const handler = async () => {
   console.log("Fetching transport modes from TfGM API");
 
   try {
