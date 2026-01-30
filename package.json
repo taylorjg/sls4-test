@@ -1,6 +1,6 @@
 {
   "name": "sls4-test",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Test AWS Lambda function using Serverless Framework v4",
   "type": "module",
   "scripts": {

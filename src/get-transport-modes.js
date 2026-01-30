@@ -1,9 +1,11 @@
 import { GraphQLClient } from "graphql-request";
 import { GetTransportModes } from "./queries.js";
+import packageJson from "../package.json" with { type: "json" };
 
 const { TFGM_API_URL } = process.env;
 
 export const handler = async () => {
+  console.log(`Version: ${packageJson.version}`);
   console.log("Fetching transport modes from TfGM API");
 
   try {
