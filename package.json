@@ -1,17 +1,21 @@
 {
   "name": "sls4-test",
   "version": "1.0.0",
-  "description": "Test Lambda function using Serverless Framework v4",
+  "description": "Test AWS Lambda function using Serverless Framework v4",
   "type": "module",
   "scripts": {
     "deploy": "serverless deploy",
     "info": "serverless info",
+    "remove": "serverless remove",
     "invoke": "serverless invoke -f hello",
     "invoke:local": "serverless invoke local -f hello",
-    "remove": "serverless remove",
-    "logs": "serverless logs --function hello"
+    "logs": "serverless logs -f hello"
   },
   "devDependencies": {
     "serverless": "^4"
+  },
+  "dependencies": {
+    "graphql": "^16.12.0",
+    "graphql-request": "^7.4.0"
   }
 }

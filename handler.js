@@ -1,9 +1,32 @@
+import { gql, GraphQLClient } from "graphql-request";
+
+const GetTransportModes = gql`
+  query GetTransportModes {
+    transportModes(modes: [TRAM]) {
+      services {
+        id
+        name
+        operators {
+          id
+          name
+          nationalCode
+          regionalCode
+        }
+      }
+    }
+  }
+`;
+
 export const hello = async (event) => {
+  const graphqlClient = new GraphQLClient("https://apiary.tfgm.com");
+  const data = await graphqlClient.request(GetTransportModes);
+
   return {
     statusCode: 200,
-    body: JSON.stringify({
-      message: 'Hello from Serverless v4 with Node.js 22!',
-      input: event,
-    }),
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+    },
+    body: JSON.stringify(data),
   };
 };
