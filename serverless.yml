@@ -9,10 +9,18 @@ provider:
   environment:
     TFGM_API_URL: https://apiary.tfgm.com
 
+build:
+  esbuild:
+    bundle: true
+    minify: true
+    sourcemap: true
+
 functions:
-  hello:
-    handler: src/handler.hello
+  getTransportModes:
+    handler: src/handler.getTransportModes
+    memorySize: 256
+    timeout: 10
     events:
-      - http:
-          path: /hello
+      - httpApi:
+          path: /transport-modes
           method: get

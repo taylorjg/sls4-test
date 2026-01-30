@@ -7,9 +7,9 @@
     "deploy": "serverless deploy",
     "info": "serverless info",
     "remove": "serverless remove",
-    "invoke": "serverless invoke -f hello",
-    "invoke:local": "serverless invoke local -f hello",
-    "logs": "serverless logs -f hello"
+    "invoke": "serverless invoke -f getTransportModes",
+    "invoke:local": "serverless invoke local -f getTransportModes",
+    "logs": "serverless logs -f getTransportModes"
   },
   "devDependencies": {
     "serverless": "^4"
