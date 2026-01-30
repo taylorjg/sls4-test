@@ -9,7 +9,9 @@
     "remove": "serverless remove",
     "invoke": "serverless invoke -f getTransportModes",
     "invoke:local": "serverless invoke local -f getTransportModes",
-    "logs": "serverless logs -f getTransportModes"
+    "logs": "serverless logs -f getTransportModes",
+    "test": "node --test",
+    "test:integration": "node --test tests/*.integration.test.js"
   },
   "devDependencies": {
     "serverless": "^4"
