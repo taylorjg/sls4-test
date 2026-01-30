@@ -1,11 +1,11 @@
 import { describe, it } from "node:test";
 import assert from "node:assert";
-import type { TransportModesResponse } from "../src/queries.ts";
+import type { TransportModesResponse } from "@app/queries.ts";
 
 // Set env var BEFORE importing the handler
 process.env.TFGM_API_URL = "https://apiary.tfgm.com";
 
-const { handler } = await import("../src/get-transport-modes.ts");
+const { handler } = await import("@app/get-transport-modes.ts");
 
 interface LambdaResponse {
   statusCode: number;

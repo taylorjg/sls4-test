@@ -1,6 +1,6 @@
 import type { APIGatewayProxyResultV2 } from "aws-lambda";
 import { GraphQLClient } from "graphql-request";
-import { GetTransportModes, type TransportModesResponse } from "./queries.ts";
+import { GetTransportModes, type TransportModesResponse } from "@app/queries.ts";
 import packageJson from "../package.json" with { type: "json" };
 
 const { TFGM_API_URL } = process.env;

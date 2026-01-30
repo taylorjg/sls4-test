@@ -10,7 +10,11 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "allowImportingTsExtensions": true,
-    "noEmit": true
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@app/*": ["./src/*"]
+    }
   },
   "include": ["src/**/*", "tests/**/*"],
   "exclude": ["node_modules", "dist", ".serverless"]

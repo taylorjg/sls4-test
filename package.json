@@ -10,13 +10,14 @@
     "invoke": "serverless invoke -f getTransportModes",
     "invoke:local": "serverless invoke local -f getTransportModes",
     "logs": "serverless logs -f getTransportModes",
-    "test": "node --experimental-strip-types --test",
+    "test": "tsx --test tests/*.test.ts",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8",
     "@types/node": "^22",
     "serverless": "^4",
+    "tsx": "^4",
     "typescript": "^5"
   },
   "dependencies": {
