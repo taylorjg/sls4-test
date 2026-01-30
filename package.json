@@ -10,11 +10,14 @@
     "invoke": "serverless invoke -f getTransportModes",
     "invoke:local": "serverless invoke local -f getTransportModes",
     "logs": "serverless logs -f getTransportModes",
-    "test": "node --test",
-    "test:integration": "node --test tests/*.integration.test.js"
+    "test": "node --experimental-strip-types --test",
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "serverless": "^4"
+    "@types/aws-lambda": "^8",
+    "@types/node": "^22",
+    "serverless": "^4",
+    "typescript": "^5"
   },
   "dependencies": {
     "graphql": "^16.12.0",

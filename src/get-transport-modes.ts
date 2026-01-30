@@ -1,16 +1,17 @@
+import type { APIGatewayProxyResultV2 } from "aws-lambda";
 import { GraphQLClient } from "graphql-request";
-import { GetTransportModes } from "./queries.js";
+import { GetTransportModes, type TransportModesResponse } from "./queries.ts";
 import packageJson from "../package.json" with { type: "json" };
 
 const { TFGM_API_URL } = process.env;
 
-export const handler = async () => {
+export const handler = async (): Promise<APIGatewayProxyResultV2> => {
   console.log(`Version: ${packageJson.version}`);
   console.log("Fetching transport modes from TfGM API");
 
   try {
-    const graphqlClient = new GraphQLClient(TFGM_API_URL);
-    const data = await graphqlClient.request(GetTransportModes);
+    const graphqlClient = new GraphQLClient(TFGM_API_URL!);
+    const data = await graphqlClient.request<TransportModesResponse>(GetTransportModes);
 
     console.log("Successfully fetched transport modes");
 
@@ -19,9 +20,10 @@ export const handler = async () => {
       body: JSON.stringify(data),
     };
   } catch (error) {
+    const err = error as Error;
     console.error("GraphQL request failed:", {
-      message: error.message,
-      stack: error.stack,
+      message: err.message,
+      stack: err.stack,
     });
 
     return {
