@@ -7,9 +7,6 @@
     "deploy": "serverless deploy",
     "info": "serverless info",
     "remove": "serverless remove",
-    "invoke": "serverless invoke -f getTransportModes",
-    "invoke:local": "serverless invoke local -f getTransportModes",
-    "logs": "serverless logs -f getTransportModes",
     "test": "tsx --test tests/*.test.ts",
     "typecheck": "tsc --noEmit"
   },

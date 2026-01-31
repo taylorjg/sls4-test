@@ -1,5 +1,9 @@
 import { gql } from "graphql-request";
-import { AlertFragment, Operator, Location, type Alert } from "./types.ts";
+import {
+  AlertFragment,
+  type TramLocation,
+  type TransportModeWithAlerts,
+} from "./types/index.ts";
 
 export const GetTrams = gql`
   query GetTrams($atcoCode: String!) {
@@ -8,10 +12,7 @@ export const GetTrams = gql`
       mode
       atcoCode
       type
-      locality
       ... on MassTransportLocation {
-        shortName
-        longName
         lines {
           ... on TramLine {
             id
@@ -64,27 +65,6 @@ export const GetTrams = gql`
 `;
 
 export interface GetTramsResponse {
-  locationByAtco: Location[];
-  lineAlerts: Alert[];
-}
-
-export interface Departure {
-  platformStand: string;
-  trip: Trip;
-  timings: Timing[];
-}
-
-export interface Trip {
-  __typename: string;
-  id: string;
-  mode: string;
-  operator: Operator;
-}
-
-export interface Timing {
-  scheduledDepartureTime: string;
-  expectedDepartureTime: string;
-  lastUpdated: string;
-  status: string;
-  wait: number;
+  locationByAtco: TramLocation[];
+  lineAlerts: TransportModeWithAlerts[];
 }

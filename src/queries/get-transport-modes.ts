@@ -1,5 +1,5 @@
 import { gql } from "graphql-request";
-import type { Service } from "./types.ts";
+import type { TransportModeWithServices } from "./types/index.ts";
 
 export const GetTransportModes = gql`
   query GetTransportModes {
@@ -18,10 +18,6 @@ export const GetTransportModes = gql`
   }
 `;
 
-interface TransportMode {
-  services: Service[];
-}
-
 export interface GetTransportModesResponse {
-  transportModes: TransportMode[];
+  transportModes: TransportModeWithServices[];
 }
