@@ -19,16 +19,11 @@ export const AlertFragment = gql`
         name
       }
     }
-    id
     effect
     validityScopes
     validityPeriods {
       start
       end
-    }
-    link {
-      href
-      label
     }
   }
 `;

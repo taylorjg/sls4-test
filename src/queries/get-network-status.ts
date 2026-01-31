@@ -1,5 +1,6 @@
 import { gql } from "graphql-request";
-import { AlertFragment, type TransportModeWithAlerts } from "./types/index.ts";
+import { AlertFragment } from "./fragments/index.ts";
+import type { TransportModeWithAlerts } from "../types/index.ts";
 
 export const GetNetworkStatus = gql`
   query GetNetworkStatus {

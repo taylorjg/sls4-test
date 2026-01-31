@@ -1,5 +1,5 @@
 import { gql } from "graphql-request";
-import type { SearchLocation } from "./types/index.ts";
+import type { SearchLocation } from "../types/index.ts";
 
 export const SearchLocations = gql`
   query SearchLocations($searchKey: String = "") {

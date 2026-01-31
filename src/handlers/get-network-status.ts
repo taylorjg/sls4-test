@@ -1,19 +1,19 @@
 import type { APIGatewayProxyResultV2 } from "aws-lambda";
 import { GraphQLClient } from "graphql-request";
-import { GetTransportModes, type GetTransportModesResponse } from "@app/queries/index.ts";
-import packageJson from "../package.json" with { type: "json" };
+import { GetNetworkStatus, type GetNetworkStatusResponse } from "@app/queries/index.ts";
+import packageJson from "../../package.json" with { type: "json" };
 
 const { TFGM_API_URL } = process.env;
 
 export const handler = async (): Promise<APIGatewayProxyResultV2> => {
   console.log(`Version: ${packageJson.version}`);
-  console.log("Fetching transport modes from TfGM API");
+  console.log("Fetching network status from TfGM API");
 
   try {
     const graphqlClient = new GraphQLClient(TFGM_API_URL!);
-    const data = await graphqlClient.request<GetTransportModesResponse>(GetTransportModes);
+    const data = await graphqlClient.request<GetNetworkStatusResponse>(GetNetworkStatus);
 
-    console.log("Successfully fetched transport modes");
+    console.log("Successfully fetched network status");
 
     return {
       statusCode: 200,
@@ -28,7 +28,7 @@ export const handler = async (): Promise<APIGatewayProxyResultV2> => {
 
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: "Failed to fetch transport modes" }),
+      body: JSON.stringify({ error: "Failed to fetch network status" }),
     };
   }
 };

@@ -7,7 +7,7 @@ import "./setup.ts";
 // Set env var BEFORE importing the handler
 process.env.TFGM_API_URL = "https://apiary.tfgm.com";
 
-const { handler } = await import("@app/search-locations.ts");
+const { handler } = await import("@app/handlers/search-locations.ts");
 
 interface LambdaResponse {
   statusCode: number;
