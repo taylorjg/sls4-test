@@ -1,7 +1,7 @@
-import type { Line } from "./line.ts";
+import type { Service } from "./service.ts";
 
 export interface SearchLocation {
   atcoCode: string;
   name: string;
-  lines: Line[];
+  services: Service[];
 }

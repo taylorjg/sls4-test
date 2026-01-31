@@ -1,6 +1,6 @@
 import type { APIGatewayProxyEventV2, APIGatewayProxyResultV2 } from "aws-lambda";
 import { GraphQLClient } from "graphql-request";
-import { SearchLocations, type SearchLocationsResponse } from "@app/queries/index.ts";
+import { SearchLocations, transformSearchLocations } from "@app/queries/index.ts";
 import packageJson from "../../package.json" with { type: "json" };
 
 const { TFGM_API_URL } = process.env;
@@ -14,11 +14,10 @@ export const handler = async (event: APIGatewayProxyEventV2): Promise<APIGateway
 
   try {
     const graphqlClient = new GraphQLClient(TFGM_API_URL!);
-    const data = await graphqlClient.request<SearchLocationsResponse>(SearchLocations, {
-      searchKey,
-    });
+    const rawData = await graphqlClient.request(SearchLocations, { searchKey });
+    const data = transformSearchLocations(rawData);
 
-    console.log(`Successfully found ${data.searchLocations.length} locations`);
+    console.log(`Successfully found ${data.length} locations`);
 
     return {
       statusCode: 200,

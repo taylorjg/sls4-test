@@ -1,6 +1,5 @@
 import { gql } from "graphql-request";
-import { AlertFragment } from "./fragments/index.ts";
-import { type TramLocation, type TransportModeWithAlerts } from "../types/index.ts";
+import { AlertFragment } from "../fragments/index.ts";
 
 export const GetTrams = gql`
   query GetTrams($atcoCode: String!) {
@@ -37,8 +36,3 @@ export const GetTrams = gql`
 
   ${AlertFragment}
 `;
-
-export interface GetTramsResponse {
-  locationByAtco: TramLocation[];
-  lineAlerts: TransportModeWithAlerts[];
-}
