@@ -35,12 +35,3 @@ functions:
       - httpApi:
           path: /trams
           method: get
-
-  getNetworkStatus:
-    handler: src/handlers/get-network-status.handler
-    memorySize: 256
-    timeout: 10
-    events:
-      - httpApi:
-          path: /network-status
-          method: get

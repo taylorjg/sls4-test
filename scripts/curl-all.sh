@@ -1,0 +1,9 @@
+DEPLOYED_URL="https://hsf41foww6.execute-api.us-east-1.amazonaws.com"
+
+echo searchLocations:
+curl -X GET "${DEPLOYED_URL}/search-locations?searchKey=road" -s | jq
+echo
+
+echo getTrams:
+curl -X GET "${DEPLOYED_URL}/trams?atcoCode=9400ZZMASTW" -s | jq
+echo
