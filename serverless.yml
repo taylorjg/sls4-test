@@ -8,6 +8,8 @@ provider:
   region: ${opt:region, 'us-east-1'}
   environment:
     TFGM_API_URL: https://apiary.tfgm.com
+  httpApi:
+    cors: true
 
 build:
   esbuild:
