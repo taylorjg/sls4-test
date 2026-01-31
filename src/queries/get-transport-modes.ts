@@ -18,10 +18,10 @@ export const GetTransportModes = gql`
   }
 `;
 
-export interface TransportMode {
+interface TransportMode {
   services: Service[];
 }
 
-export interface TransportModesResponse {
+export interface GetTransportModesResponse {
   transportModes: TransportMode[];
 }

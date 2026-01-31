@@ -1,5 +1,5 @@
 import { gql } from "graphql-request";
-import type { Service } from "./types.ts";
+import type { Line } from "./types.ts";
 
 export const SearchLocations = gql`
   query SearchLocations($searchKey: String = "") {
@@ -25,10 +25,6 @@ export const SearchLocations = gql`
     }
   }
 `;
-
-export interface Line {
-  services: Service[];
-}
 
 export interface SearchLocation {
   atcoCode: string;

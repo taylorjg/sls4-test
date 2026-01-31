@@ -1,6 +1,6 @@
 import type { APIGatewayProxyResultV2 } from "aws-lambda";
 import { GraphQLClient } from "graphql-request";
-import { GetTransportModes, type TransportModesResponse } from "@app/queries/index.ts";
+import { GetTransportModes, type GetTransportModesResponse } from "@app/queries/index.ts";
 import packageJson from "../package.json" with { type: "json" };
 
 const { TFGM_API_URL } = process.env;
@@ -11,7 +11,7 @@ export const handler = async (): Promise<APIGatewayProxyResultV2> => {
 
   try {
     const graphqlClient = new GraphQLClient(TFGM_API_URL!);
-    const data = await graphqlClient.request<TransportModesResponse>(GetTransportModes);
+    const data = await graphqlClient.request<GetTransportModesResponse>(GetTransportModes);
 
     console.log("Successfully fetched transport modes");
 
