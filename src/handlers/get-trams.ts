@@ -1,6 +1,6 @@
 import type { APIGatewayProxyEventV2, APIGatewayProxyResultV2 } from "aws-lambda";
 import { GraphQLClient } from "graphql-request";
-import { GetTrams } from "@app/queries/index.ts";
+import { GetTrams, transformGetTrams, RawGetTramsResponse } from "@app/queries/index.ts";
 import packageJson from "../../package.json" with { type: "json" };
 
 const { TFGM_API_URL } = process.env;
@@ -13,7 +13,8 @@ export const handler = async (event: APIGatewayProxyEventV2): Promise<APIGateway
 
   try {
     const graphqlClient = new GraphQLClient(TFGM_API_URL!);
-    const data = await graphqlClient.request(GetTrams, { atcoCode });
+    const rawData = await graphqlClient.request<RawGetTramsResponse>(GetTrams, { atcoCode });
+    const data = transformGetTrams(rawData);
 
     console.log("Successfully fetched trams");
 

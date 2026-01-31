@@ -1,5 +1,4 @@
 import { gql } from "graphql-request";
-import { AlertFragment } from "../fragments/index.ts";
 
 export const GetTrams = gql`
   query GetTrams($atcoCode: String!) {
@@ -17,22 +16,48 @@ export const GetTrams = gql`
             wait
           }
         }
-        stopAlerts: alerts {
-          ...AlertFragment
-        }
-      }
-    }
-    lineAlerts: transportModes(modes: [TRAM]) {
-      alerts(
-      filters: {
-        validityScopes: NOW
-        effects: [NO_SERVICE, OTHER]
-        alertScope: [Service, ServicesAtLocation]
-      }) {
-        ...AlertFragment
       }
     }
   }
-
-  ${AlertFragment}
 `;
+
+interface RawDeparture {
+  trip: {
+    carriages: number;
+    destinationDisplay: string;
+  };
+  timings: {
+    status: string;
+    wait: number;
+  };
+}
+
+interface RawLocation {
+  departures: RawDeparture[];
+}
+
+interface RawGetTramsResponse {
+  locationByAtco: RawLocation[];
+}
+
+export interface Tram {
+  carriages: number;
+  destinationDisplay: string;
+  status: string;
+  due: number;
+}
+
+export type GetTramsResponse = Tram[];
+
+// Transform to domain response
+export const transformGetTrams = (raw: RawGetTramsResponse): GetTramsResponse => {
+  const location = raw.locationByAtco[0];
+  if (!location) return [];
+
+  return location.departures.map((departure) => ({
+    carriages: departure.trip.carriages,
+    destinationDisplay: departure.trip.destinationDisplay,
+    status: departure.timings.status,
+    due: departure.timings.wait,
+  }));
+};

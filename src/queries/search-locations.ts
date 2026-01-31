@@ -1,5 +1,4 @@
 import { gql } from "graphql-request";
-import type { Service, SearchLocation } from "../types/index.ts";
 
 export const SearchLocations = gql`
   query SearchLocations($searchKey: String = "") {
@@ -26,29 +25,43 @@ export const SearchLocations = gql`
   }
 `;
 
-// Raw response from GraphQL (nested structure)
+interface RawService {
+  id: string;
+  name: string;
+}
+
 interface RawLine {
-  services: Service[];
+  services: RawService[];
 }
 
 interface RawSearchLocation {
   atcoCode: string;
   name: string;
-  lines?: RawLine[];
+  lines: RawLine[];
 }
 
-export interface RawSearchLocationsResponse {
+interface RawSearchLocationsResponse {
   searchLocations: RawSearchLocation[];
 }
 
-// Transformed response type
+export interface Service {
+  id: string;
+  name: string;
+}
+
+export interface SearchLocation {
+  atcoCode: string;
+  name: string;
+  services: Service[];
+}
+
 export type SearchLocationsResponse = SearchLocation[];
 
-// Transform function to flatten the response
+// Transform to domain response
 export const transformSearchLocations = (raw: RawSearchLocationsResponse): SearchLocationsResponse => {
   return raw.searchLocations.map((location) => ({
     atcoCode: location.atcoCode,
     name: location.name,
-    services: location.lines?.flatMap((line) => line.services) ?? [],
+    services: location.lines.flatMap((line) => line.services),
   }));
 };
