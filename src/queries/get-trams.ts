@@ -23,7 +23,7 @@ export const GetTrams = gql`
 
 interface RawDeparture {
   trip: {
-    carriages: number;
+    carriages: string;
     destinationDisplay: string;
   };
   timings: {
@@ -36,12 +36,12 @@ interface RawLocation {
   departures: RawDeparture[];
 }
 
-interface RawGetTramsResponse {
+export interface RawGetTramsResponse {
   locationByAtco: RawLocation[];
 }
 
 export interface Tram {
-  carriages: number;
+  carriages: string;
   destinationDisplay: string;
   status: string;
   due: number;
@@ -51,13 +51,15 @@ export type GetTramsResponse = Tram[];
 
 // Transform to domain response
 export const transformGetTrams = (raw: RawGetTramsResponse): GetTramsResponse => {
-  const location = raw.locationByAtco[0];
-  if (!location) return [];
+  const location = raw.locationByAtco?.[0];
+  if (!location?.departures) return [];
 
-  return location.departures.map((departure) => ({
-    carriages: departure.trip.carriages,
-    destinationDisplay: departure.trip.destinationDisplay,
-    status: departure.timings.status,
-    due: departure.timings.wait,
-  }));
+  return location.departures
+    .filter((departure) => departure.trip && departure.timings)
+    .map((departure) => ({
+      carriages: departure.trip!.carriages ?? 0,
+      destinationDisplay: departure.trip!.destinationDisplay ?? "",
+      status: departure.timings!.status ?? "",
+      due: departure.timings!.wait ?? 0,
+    }));
 };

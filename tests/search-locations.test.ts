@@ -1,75 +1,70 @@
+import "./setup.ts";
 import { describe, it } from "node:test";
 import assert from "node:assert";
-import type { APIGatewayProxyEventV2 } from "aws-lambda";
-import type { SearchLocationsResponse } from "@app/queries/index.ts";
-import "./setup.ts";
+import type { APIGatewayProxyEventV2, APIGatewayProxyStructuredResultV2 } from "aws-lambda";
 
-// Set env var BEFORE importing the handler
+// Set env var before importing handler
 process.env.TFGM_API_URL = "https://apiary.tfgm.com";
 
 const { handler } = await import("@app/handlers/search-locations.ts");
 
-interface LambdaResponse {
-  statusCode: number;
-  body: string;
-}
-
-const createEvent = (searchKey?: string): APIGatewayProxyEventV2 =>
+const createEvent = (searchKey?: string) =>
   ({
     queryStringParameters: searchKey ? { searchKey } : undefined,
-  }) as APIGatewayProxyEventV2;
+  }) as unknown as APIGatewayProxyEventV2;
 
-describe("searchLocations integration tests", () => {
+describe("searchLocations integration test", () => {
   it("should return 200 status code", async () => {
-    const response = (await handler(createEvent())) as LambdaResponse;
+    const event = createEvent("Piccadilly");
+    const result = (await handler(event)) as APIGatewayProxyStructuredResultV2;
 
-    assert.strictEqual(response.statusCode, 200);
+    assert.strictEqual(result.statusCode, 200);
   });
 
-  it("should return valid JSON body", async () => {
-    const response = (await handler(createEvent())) as LambdaResponse;
-    const body = JSON.parse(response.body) as SearchLocationsResponse;
+  it("should return an array of locations", async () => {
+    const event = createEvent("Piccadilly");
+    const result = (await handler(event)) as APIGatewayProxyStructuredResultV2;
 
-    assert.ok(Array.isArray(body), "Response should be an array");
+    const body = JSON.parse(result.body as string);
+    assert.ok(Array.isArray(body), "Response body should be an array");
   });
 
-  it("should return search locations as an array", async () => {
-    const response = (await handler(createEvent())) as LambdaResponse;
-    const body = JSON.parse(response.body) as SearchLocationsResponse;
+  it("should return locations with correct shape", async () => {
+    const event = createEvent("Piccadilly");
+    const result = (await handler(event)) as APIGatewayProxyStructuredResultV2;
 
-    assert.ok(Array.isArray(body), "Response should be an array");
+    const body = JSON.parse(result.body as string);
+    assert.ok(body.length > 0, "Should return at least one location");
+
+    const location = body[0];
+    assert.ok("atcoCode" in location, "Location should have atcoCode");
+    assert.ok("name" in location, "Location should have name");
+    assert.ok("services" in location, "Location should have services");
+    assert.ok(Array.isArray(location.services), "services should be an array");
   });
 
-  it("should return locations with expected structure", async () => {
-    const response = (await handler(createEvent())) as LambdaResponse;
-    const locations = JSON.parse(response.body) as SearchLocationsResponse;
+  it("should return services with correct shape", async () => {
+    const event = createEvent("Piccadilly");
+    const result = (await handler(event)) as APIGatewayProxyStructuredResultV2;
 
-    if (locations.length > 0) {
-      const location = locations[0];
-      assert.ok(location.atcoCode, "Location should have an atcoCode");
-      assert.ok(location.name, "Location should have a name");
+    const body = JSON.parse(result.body as string);
+    const locationWithServices = body.find(
+      (loc: { services: unknown[] }) => loc.services.length > 0
+    );
+
+    if (locationWithServices) {
+      const service = locationWithServices.services[0];
+      assert.ok("id" in service, "Service should have id");
+      assert.ok("name" in service, "Service should have name");
     }
   });
 
-  it("should filter results when searchKey is provided", async () => {
-    const response = (await handler(createEvent("piccadilly"))) as LambdaResponse;
-    const body = JSON.parse(response.body) as SearchLocationsResponse;
+  it("should return empty array for non-matching search", async () => {
+    const event = createEvent("ZZZZNONEXISTENT");
+    const result = (await handler(event)) as APIGatewayProxyStructuredResultV2;
 
-    assert.strictEqual(response.statusCode, 200);
-    assert.ok(Array.isArray(body), "Should return an array");
-  });
-
-  it("should return results when searchKey matches a location", async () => {
-    const response = (await handler(createEvent("market"))) as LambdaResponse;
-    const locations = JSON.parse(response.body) as SearchLocationsResponse;
-
-    assert.strictEqual(response.statusCode, 200);
-    // Should find at least one location with "market" in the name
-    if (locations.length > 0) {
-      const hasMatch = locations.some((loc) =>
-        loc.name.toLowerCase().includes("market")
-      );
-      assert.ok(hasMatch, "Should find locations matching search key");
-    }
+    const body = JSON.parse(result.body as string);
+    assert.ok(Array.isArray(body), "Response body should be an array");
+    assert.strictEqual(body.length, 0, "Should return empty array for non-matching search");
   });
 });

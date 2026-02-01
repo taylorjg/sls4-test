@@ -40,7 +40,7 @@ interface RawSearchLocation {
   lines: RawLine[];
 }
 
-interface RawSearchLocationsResponse {
+export interface RawSearchLocationsResponse {
   searchLocations: RawSearchLocation[];
 }
 
@@ -59,6 +59,8 @@ export type SearchLocationsResponse = SearchLocation[];
 
 // Transform to domain response
 export const transformSearchLocations = (raw: RawSearchLocationsResponse): SearchLocationsResponse => {
+  if (!raw.searchLocations) return [];
+  
   return raw.searchLocations.map((location) => ({
     atcoCode: location.atcoCode,
     name: location.name,
