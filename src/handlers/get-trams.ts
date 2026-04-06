@@ -6,20 +6,20 @@ import packageJson from "../../package.json" with { type: "json" };
 
 const { TFGM_API_URL } = process.env;
 
-const checkLineIdsParam = (lineIdsParam: string | undefined) => {
-  if (!lineIdsParam) return null;
+const checkServiceIdsParam = (serviceIdsParam: string | undefined) => {
+  if (!serviceIdsParam) return null;
 
-  const lineIds = lineIdsParam?.split(",").map((s) => s.trim());
-  const lines = lineIds
-    .map((lineId) => networkMap.get(lineId))
-    .filter((line) => line !== undefined);
+  const serviceIds = serviceIdsParam?.split(",").map((s) => s.trim());
+  const services = serviceIds
+    .map((serviceId) => networkMap.get(serviceId))
+    .filter((service) => service !== undefined);
 
-  if (lines.length > 0 && lines.length === lineIds.length) {
-    return lines;
+  if (services.length > 0 && services.length === serviceIds.length) {
+    return services;
   }
 
   // TODO: return 400 Bad Request
-  return lines;
+  return services;
 };
 
 const checkTowardsParam = (towardsParam: string | undefined) => {
@@ -39,13 +39,13 @@ export const handler = async (event: APIGatewayProxyEventV2): Promise<APIGateway
   console.log("Fetching trams from TfGM API");
 
   const atcoCode = event.queryStringParameters?.atcoCode;
-  const lineIdsParam = event.queryStringParameters?.lineIds;
+  const serviceIdsParam = event.queryStringParameters?.serviceIds;
   const towardsParam = event.queryStringParameters?.towards;
 
   try {
-    const lines = checkLineIdsParam(lineIdsParam);
+    const services = checkServiceIdsParam(serviceIdsParam);
     const towards = checkTowardsParam(towardsParam);
-    const filter = lines && towards ? { lines, towards } : null;
+    const filter = services && towards ? { services, towards } : null;
 
     const graphqlClient = new GraphQLClient(TFGM_API_URL!);
     const rawData = await graphqlClient.request<RawGetTramsResponse>(GetTrams, { atcoCode });

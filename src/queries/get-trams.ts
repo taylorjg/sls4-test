@@ -55,7 +55,7 @@ export type GetTramsResponse = Tram[];
 export const transformGetTrams = (
   raw: RawGetTramsResponse,
   filter: {
-    lines: { id: string; name: string; tramStops: { atcoCode: string; name: string; }[]; }[];
+    services: { id: string; name: string; tramStops: { atcoCode: string; name: string; }[]; }[];
     towards: "starts" | "ends";
   } | null): GetTramsResponse => {
   const location = raw.locationByAtco?.[0];
@@ -68,10 +68,10 @@ export const transformGetTrams = (
     filteredDepartures = filteredDepartures.filter((departure) => {
       if (departure.trip.destinationDisplay === "Terminates Here") return true;
 
-      return filter.lines.some((line) => {
+      return filter.services.some((service) => {
 
-        const thisStopIndex = line.tramStops.findIndex((tramStop) => tramStop.atcoCode === location.atcoCode);
-        const destinationStopIndex = line.tramStops.findIndex((tramStop) => tramStop.name === departure.trip.destinationDisplay);
+        const thisStopIndex = service.tramStops.findIndex((tramStop) => tramStop.atcoCode === location.atcoCode);
+        const destinationStopIndex = service.tramStops.findIndex((tramStop) => tramStop.name === departure.trip.destinationDisplay);
 
         if (thisStopIndex < 0 || destinationStopIndex < 0) return false;
 
