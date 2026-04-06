@@ -1,0 +1,74 @@
+{
+  "id": "Purple_Line",
+  "name": "Altrincham - Piccadilly/Etihad Campus",
+  "tramStops": [
+    {
+      "atcoCode": "9400ZZMAALT",
+      "name": "Altrincham"
+    },
+    {
+      "atcoCode": "9400ZZMANAV",
+      "name": "Navigation Road"
+    },
+    {
+      "atcoCode": "9400ZZMATIM",
+      "name": "Timperley"
+    },
+    {
+      "atcoCode": "9400ZZMABKS",
+      "name": "Brooklands"
+    },
+    {
+      "atcoCode": "9400ZZMASWP",
+      "name": "Sale"
+    },
+    {
+      "atcoCode": "9400ZZMADNE",
+      "name": "Dane Road"
+    },
+    {
+      "atcoCode": "9400ZZMASFD",
+      "name": "Stretford"
+    },
+    {
+      "atcoCode": "9400ZZMAOLD",
+      "name": "Old Trafford"
+    },
+    {
+      "atcoCode": "9400ZZMATRA",
+      "name": "Trafford Bar"
+    },
+    {
+      "atcoCode": "9400ZZMACRN",
+      "name": "Cornbrook"
+    },
+    {
+      "atcoCode": "9400ZZMAGMX",
+      "name": "Deansgate-Castlefield"
+    },
+    {
+      "atcoCode": "9400ZZMASTP",
+      "name": "St Peter's Square"
+    },
+    {
+      "atcoCode": "9400ZZMAPGD",
+      "name": "Piccadilly Gardens"
+    },
+    {
+      "atcoCode": "9400ZZMAPGD",
+      "name": "Piccadilly"
+    },
+    {
+      "atcoCode": "9400ZZMANIS",
+      "name": "New Islington"
+    },
+    {
+      "atcoCode": "9400ZZMAHTN",
+      "name": "Holt Town"
+    },
+    {
+      "atcoCode": "9400ZZMAECS",
+      "name": "Etihad Campus"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "id": "Red_Line",
+  "name": "The Trafford Centre - Deansgate-Castlefield",
+  "tramStops": [
+    {
+      "atcoCode": "9400ZZMATRC",
+      "name": "The Trafford Centre"
+    },
+    {
+      "atcoCode": "9400ZZMAEVC",
+      "name": "Trafford Palazzo"
+    },
+    {
+      "atcoCode": "9400ZZMAPAR",
+      "name": "Parkway"
+    },
+    {
+      "atcoCode": "9400ZZMAVLG",
+      "name": "Village"
+    },
+    {
+      "atcoCode": "9400ZZMAIWM",
+      "name": "Imperial War Museum"
+    },
+    {
+      "atcoCode": "9400ZZMAWFS",
+      "name": "Wharfside"
+    },
+    {
+      "atcoCode": "9400ZZMAPOM",
+      "name": "Pomona"
+    },
+    {
+      "atcoCode": "9400ZZMACRN",
+      "name": "Cornbrook"
+    },
+    {
+      "atcoCode": "9400ZZMAGMX",
+      "name": "Deansgate-Castlefield"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "id": "Yellow_Line",
+  "name": "Bury - Piccadilly",
+  "tramStops": [
+    {
+      "atcoCode": "9400ZZMABUR",
+      "name": "Bury"
+    },
+    {
+      "atcoCode": "9400ZZMARAD",
+      "name": "Radcliffe"
+    },
+    {
+      "atcoCode": "9400ZZMAWFD",
+      "name": "Whitefield"
+    },
+    {
+      "atcoCode": "9400ZZMABOB",
+      "name": "Besses o' th' Barn"
+    },
+    {
+      "atcoCode": "9400ZZMAPWC",
+      "name": "Prestwich"
+    },
+    {
+      "atcoCode": "9400ZZMAHEA",
+      "name": "Heaton Park"
+    },
+    {
+      "atcoCode": "9400ZZMABOW",
+      "name": "Bowker Vale"
+    },
+    {
+      "atcoCode": "9400ZZMACRU",
+      "name": "Crumpsall"
+    },
+    {
+      "atcoCode": "9400ZZMAABM",
+      "name": "Abraham Moss"
+    },
+    {
+      "atcoCode": "9400ZZMAQRD",
+      "name": "Queens Road"
+    },
+    {
+      "atcoCode": "9400ZZMAVIC",
+      "name": "Victoria"
+    },
+    {
+      "atcoCode": "9400ZZMASHU",
+      "name": "Shudehill"
+    },
+    {
+      "atcoCode": "9400ZZMAMKT",
+      "name": "Market Street"
+    },
+    {
+      "atcoCode": "9400ZZMAPGD",
+      "name": "Piccadilly Gardens"
+    },
+    {
+      "atcoCode": "9400ZZMAPGD",
+      "name": "Piccadilly"
+    }
+  ]
+}

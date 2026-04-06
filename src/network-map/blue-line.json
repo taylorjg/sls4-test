@@ -1,0 +1,118 @@
+{
+  "id": "Blue_Line",
+  "name": "Ashton-Under-Lyne - Eccles",
+  "tramStops": [
+    {
+      "atcoCode": "9400ZZMAAUL",
+      "name": "Ashton-under-Lyne"
+    },
+    {
+      "atcoCode": "9400ZZMAAWT",
+      "name": "Ashton West"
+    },
+    {
+      "atcoCode": "9400ZZMAAMO",
+      "name": "Ashton Moss"
+    },
+    {
+      "atcoCode": "9400ZZMAAUD",
+      "name": "Audenshaw"
+    },
+    {
+      "atcoCode": "9400ZZMADRO",
+      "name": "Droylsden"
+    },
+    {
+      "atcoCode": "9400ZZMACEM",
+      "name": "Cemetery Road"
+    },
+    {
+      "atcoCode": "9400ZZMAELN",
+      "name": "Edge Lane"
+    },
+    {
+      "atcoCode": "9400ZZMACLN",
+      "name": "Clayton Hall"
+    },
+    {
+      "atcoCode": "9400ZZMAVPK",
+      "name": "Velopark"
+    },
+    {
+      "atcoCode": "9400ZZMAECS",
+      "name": "Etihad Campus"
+    },
+    {
+      "atcoCode": "9400ZZMAHTN",
+      "name": "Holt Town"
+    },
+    {
+      "atcoCode": "9400ZZMANIS",
+      "name": "New Islington"
+    },
+    {
+      "atcoCode": "9400ZZMAPGD",
+      "name": "Piccadilly"
+    },
+    {
+      "atcoCode": "9400ZZMAPGD",
+      "name": "Piccadilly Gardens"
+    },
+    {
+      "atcoCode": "9400ZZMASTP",
+      "name": "St Peter's Square"
+    },
+    {
+      "atcoCode": "9400ZZMAGMX",
+      "name": "Deansgate-Castlefield"
+    },
+    {
+      "atcoCode": "9400ZZMACRN",
+      "name": "Cornbrook"
+    },
+    {
+      "atcoCode": "9400ZZMAPOM",
+      "name": "Pomona"
+    },
+    {
+      "atcoCode": "9400ZZMAEXC",
+      "name": "Exchange Quay"
+    },
+    {
+      "atcoCode": "9400ZZMASQY",
+      "name": "Salford Quays"
+    },
+    {
+      "atcoCode": "9400ZZMAANC",
+      "name": "Anchorage"
+    },
+    {
+      "atcoCode": "9400ZZMAHCY",
+      "name": "Harbour City"
+    },
+    {
+      "atcoCode": "9400ZZMAMCU",
+      "name": "MediaCityUK"
+    },
+    {
+      "atcoCode": "9400ZZMABWY",
+      "name": "Broadway"
+    },
+    {
+      "atcoCode": "9400ZZMALWY",
+      "name": "Langworthy"
+    },
+    {
+      "atcoCode": "9400ZZMAWST",
+      "name": "Weaste"
+    },
+    {
+      "atcoCode": "9400ZZMALDY",
+      "name": "Ladywell"
+    },
+    {
+      "atcoCode": "9400ZZMAECC",
+      "name": "Eccles"
+    }
+  ]
+}

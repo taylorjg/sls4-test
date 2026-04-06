@@ -3,6 +3,7 @@ import { gql } from "graphql-request";
 export const GetTrams = gql`
   query GetTrams($atcoCode: String!) {
     locationByAtco(atcoCodes: [$atcoCode]) {
+      atcoCode
       ... on MassTransportLocation {
         departures(limit: 20) {
           trip {
@@ -33,6 +34,7 @@ interface RawDeparture {
 }
 
 interface RawLocation {
+  atcoCode: string;
   departures: RawDeparture[];
 }
 
@@ -50,16 +52,47 @@ export interface Tram {
 export type GetTramsResponse = Tram[];
 
 // Transform to domain response
-export const transformGetTrams = (raw: RawGetTramsResponse): GetTramsResponse => {
+export const transformGetTrams = (
+  raw: RawGetTramsResponse,
+  filter: {
+    lines: { id: string; name: string; tramStops: { atcoCode: string; name: string; }[]; }[];
+    towards: "starts" | "ends";
+  } | null): GetTramsResponse => {
   const location = raw.locationByAtco?.[0];
   if (!location?.departures) return [];
 
-  return location.departures
-    .filter((departure) => departure.trip && departure.timings)
+  let filteredDepartures = location.departures
+    .filter((departure) => departure.trip && departure.timings);
+
+  if (filter) {
+    filteredDepartures = filteredDepartures.filter((departure) => {
+      if (departure.trip.destinationDisplay === "Terminates Here") return true;
+
+      return filter.lines.some((line) => {
+
+        const thisStopIndex = line.tramStops.findIndex((tramStop) => tramStop.atcoCode === location.atcoCode);
+        const destinationStopIndex = line.tramStops.findIndex((tramStop) => tramStop.name === departure.trip.destinationDisplay);
+
+        if (thisStopIndex < 0 || destinationStopIndex < 0) return false;
+
+        if (filter.towards === "starts") {
+          return destinationStopIndex < thisStopIndex;
+        }
+
+        if (filter.towards === "ends") {
+          return destinationStopIndex > thisStopIndex;
+        }
+
+        return false;
+      });
+    });
+  }
+
+  return filteredDepartures
     .map((departure) => ({
-      carriages: departure.trip!.carriages ?? 0,
-      destinationDisplay: departure.trip!.destinationDisplay ?? "",
-      status: departure.timings!.status ?? "",
-      due: departure.timings!.wait ?? 0,
+      carriages: departure.trip.carriages,
+      destinationDisplay: departure.trip.destinationDisplay,
+      status: departure.timings.status,
+      due: departure.timings.wait,
     }));
 };

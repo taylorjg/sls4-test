@@ -1,0 +1,106 @@
+{
+  "id": "Navy_Line",
+  "name": "Manchester Airport - Victoria",
+  "tramStops": [
+    {
+      "atcoCode": "9400ZZMAAIR",
+      "name": "Manchester Airport"
+    },
+    {
+      "atcoCode": "9400ZZMASDW",
+      "name": "Shadowmoss"
+    },
+    {
+      "atcoCode": "9400ZZMAPLL",
+      "name": "Peel Hall"
+    },
+    {
+      "atcoCode": "9400ZZMARWD",
+      "name": "Robinswood Road"
+    },
+    {
+      "atcoCode": "9400ZZMAWYT",
+      "name": "Wythenshawe Town Centre"
+    },
+    {
+      "atcoCode": "9400ZZMACSS",
+      "name": "Crossacres"
+    },
+    {
+      "atcoCode": "9400ZZMABLL",
+      "name": "Benchill"
+    },
+    {
+      "atcoCode": "9400ZZMAMFT",
+      "name": "Martinscroft"
+    },
+    {
+      "atcoCode": "9400ZZMARND",
+      "name": "Roundthorn"
+    },
+    {
+      "atcoCode": "9400ZZMABAG",
+      "name": "Baguley"
+    },
+    {
+      "atcoCode": "9400ZZMAMRD",
+      "name": "Moor Road"
+    },
+    {
+      "atcoCode": "9400ZZMAWPK",
+      "name": "Wythenshawe Park"
+    },
+    {
+      "atcoCode": "9400ZZMANMR",
+      "name": "Northern Moor"
+    },
+    {
+      "atcoCode": "9400ZZMASWP",
+      "name": "Sale Water Park"
+    },
+    {
+      "atcoCode": "9400ZZMABAR",
+      "name": "Barlow Moor Road"
+    },
+    {
+      "atcoCode": "9400ZZMASTW",
+      "name": "St Werburgh's Road"
+    },
+    {
+      "atcoCode": "9400ZZMACHO",
+      "name": "Chorlton"
+    },
+    {
+      "atcoCode": "9400ZZMAFIR",
+      "name": "Firswood"
+    },
+    {
+      "atcoCode": "9400ZZMATRA",
+      "name": "Trafford Bar"
+    },
+    {
+      "atcoCode": "9400ZZMACRN",
+      "name": "Cornbrook"
+    },
+    {
+      "atcoCode": "9400ZZMAGMX",
+      "name": "Deansgate-Castlefield"
+    },
+    {
+      "atcoCode": "9400ZZMASTP",
+      "name": "St Peter's Square"
+    },
+    {
+      "atcoCode": "9400ZZMAMKT",
+      "name": "Market Street"
+    },
+    {
+      "atcoCode": "9400ZZMASHU",
+      "name": "Shudehill"
+    },
+    {
+      "atcoCode": "9400ZZMAVIC",
+      "name": "Victoria"
+    }
+  ]
+}

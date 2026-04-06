@@ -1,0 +1,138 @@
+{
+  "id": "Pink_Line",
+  "name": "East Didsbury - Rochdale Town Centre",
+  "tramStops": [
+    {
+      "atcoCode": "9400ZZMAEDY",
+      "name": "East Didsbury"
+    },
+    {
+      "atcoCode": "9400ZZMADID",
+      "name": "Didsbury Village"
+    },
+    {
+      "atcoCode": "9400ZZMAWTD",
+      "name": "West Didsbury"
+    },
+    {
+      "atcoCode": "9400ZZMABNR",
+      "name": "Burton Road"
+    },
+    {
+      "atcoCode": "9400ZZMAWIT",
+      "name": "Withington"
+    },
+    {
+      "atcoCode": "9400ZZMASTW",
+      "name": "St Werburgh's Road"
+    },
+    {
+      "atcoCode": "9400ZZMACHO",
+      "name": "Chorlton"
+    },
+    {
+      "atcoCode": "9400ZZMAFIR",
+      "name": "Firswood"
+    },
+    {
+      "atcoCode": "9400ZZMATRA",
+      "name": "Trafford Bar"
+    },
+    {
+      "atcoCode": "9400ZZMACRN",
+      "name": "Cornbrook"
+    },
+    {
+      "atcoCode": "9400ZZMAGMX",
+      "name": "Deansgate-Castlefield"
+    },
+    {
+      "atcoCode": "9400ZZMASTP",
+      "name": "St Peter's Square"
+    },
+    {
+      "atcoCode": "9400ZZMAEXS",
+      "name": "Exchange Square"
+    },
+    {
+      "atcoCode": "9400ZZMAVIC",
+      "name": "Victoria"
+    },
+    {
+      "atcoCode": "9400ZZMAMON",
+      "name": "Monsall"
+    },
+    {
+      "atcoCode": "9400ZZMACTP",
+      "name": "Central Park"
+    },
+    {
+      "atcoCode": "9400ZZMANEW",
+      "name": "Newton Heath and Moston"
+    },
+    {
+      "atcoCode": "9400ZZMAFWH",
+      "name": "Failsworth"
+    },
+    {
+      "atcoCode": "9400ZZMAHOL",
+      "name": "Hollinwood"
+    },
+    {
+      "atcoCode": "9400ZZMASCH",
+      "name": "South Chadderton"
+    },
+    {
+      "atcoCode": "9400ZZMAFRE",
+      "name": "Freehold"
+    },
+    {
+      "atcoCode": "9400ZZMAWWD",
+      "name": "Westwood"
+    },
+    {
+      "atcoCode": "9400ZZMAOKS",
+      "name": "Oldham King Street"
+    },
+    {
+      "atcoCode": "9400ZZMAOMC",
+      "name": "Oldham Central"
+    },
+    {
+      "atcoCode": "9400ZZMAOMP",
+      "name": "Oldham Mumps"
+    },
+    {
+      "atcoCode": "9400ZZMADER",
+      "name": "Derker"
+    },
+    {
+      "atcoCode": "9400ZZMASHA",
+      "name": "Shaw and Crompton"
+    },
+    {
+      "atcoCode": "9400ZZMANHY",
+      "name": "Newhey"
+    },
+    {
+      "atcoCode": "9400ZZMAMIL",
+      "name": "Milnrow"
+    },
+    {
+      "atcoCode": "9400ZZMAKNY",
+      "name": "Kingsway Business Park"
+    },
+    {
+      "atcoCode": "9400ZZMANBD",
+      "name": "Newbold"
+    },
+    {
+      "atcoCode": "9400ZZMARRS",
+      "name": "Rochdale Railway Station"
+    },
+    {
+      "atcoCode": "9400ZZMARIN",
+      "name": "Rochdale Town Centre"
+    }
+  ]
+}

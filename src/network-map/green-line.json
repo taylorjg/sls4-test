@@ -1,0 +1,106 @@
+{
+  "id": "Green_Line",
+  "name": "Altrincham - Bury",
+  "tramStops": [
+    {
+      "atcoCode": "9400ZZMAALT",
+      "name": "Altrincham"
+    },
+    {
+      "atcoCode": "9400ZZMANAV",
+      "name": "Navigation Road"
+    },
+    {
+      "atcoCode": "9400ZZMATIM",
+      "name": "Timperley"
+    },
+    {
+      "atcoCode": "9400ZZMABKS",
+      "name": "Brooklands"
+    },
+    {
+      "atcoCode": "9400ZZMASWP",
+      "name": "Sale"
+    },
+    {
+      "atcoCode": "9400ZZMADNE",
+      "name": "Dane Road"
+    },
+    {
+      "atcoCode": "9400ZZMASFD",
+      "name": "Stretford"
+    },
+    {
+      "atcoCode": "9400ZZMAOLD",
+      "name": "Old Trafford"
+    },
+    {
+      "atcoCode": "9400ZZMATRA",
+      "name": "Trafford Bar"
+    },
+    {
+      "atcoCode": "9400ZZMACRN",
+      "name": "Cornbrook"
+    },
+    {
+      "atcoCode": "9400ZZMAGMX",
+      "name": "Deansgate-Castlefield"
+    },
+    {
+      "atcoCode": "9400ZZMASTP",
+      "name": "St Peter's Square"
+    },
+    {
+      "atcoCode": "9400ZZMAMKT",
+      "name": "Market Street"
+    },
+    {
+      "atcoCode": "9400ZZMASHU",
+      "name": "Shudehill"
+    },
+    {
+      "atcoCode": "9400ZZMAVIC",
+      "name": "Victoria"
+    },
+    {
+      "atcoCode": "9400ZZMAQRD",
+      "name": "Queens Road"
+    },
+    {
+      "atcoCode": "9400ZZMAABM",
+      "name": "Abraham Moss"
+    },
+    {
+      "atcoCode": "9400ZZMACRU",
+      "name": "Crumpsall"
+    },
+    {
+      "atcoCode": "9400ZZMABOW",
+      "name": "Bowker Vale"
+    },
+    {
+      "atcoCode": "9400ZZMAHEA",
+      "name": "Heaton Park"
+    },
+    {
+      "atcoCode": "9400ZZMAPWC",
+      "name": "Prestwich"
+    },
+    {
+      "atcoCode": "9400ZZMABOB",
+      "name": "Besses o' th' Barn"
+    },
+    {
+      "atcoCode": "9400ZZMAWFD",
+      "name": "Whitefield"
+    },
+    {
+      "atcoCode": "9400ZZMARAD",
+      "name": "Radcliffe"
+    },
+    {
+      "atcoCode": "9400ZZMABUR",
+      "name": "Bury"
+    }
+  ]
+}
