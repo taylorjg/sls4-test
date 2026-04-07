@@ -37,6 +37,30 @@
     {
       "atcoCode": "9400ZZMAGMX",
       "name": "Deansgate-Castlefield"
+    },
+    {
+      "atcoCode": "9400ZZMASTP",
+      "name": "St Peter's Square"
+    },
+    {
+      "atcoCode": "9400ZZMAEXS",
+      "name": "Exchange Square"
+    },
+    {
+      "atcoCode": "9400ZZMAVIC",
+      "name": "Victoria"
+    },
+    {
+      "atcoCode": "9400ZZMAQRD",
+      "name": "Queens Road"
+    },
+    {
+      "atcoCode": "9400ZZMAABM",
+      "name": "Abraham Moss"
+    },
+    {
+      "atcoCode": "9400ZZMACRU",
+      "name": "Crumpsall"
     }
   ]
 }
