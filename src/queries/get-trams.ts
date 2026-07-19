@@ -55,23 +55,28 @@ export type GetTramsResponse = Tram[];
 export const transformGetTrams = (
   raw: RawGetTramsResponse,
   filter: {
-    services: { id: string; name: string; tramStops: { atcoCode: string; name: string; }[]; }[];
+    services: { id: string; name: string; tramStops: { atcoCode: string; name: string }[] }[];
     towards: "starts" | "ends";
-  } | null): GetTramsResponse => {
+  } | null,
+): GetTramsResponse => {
   const location = raw.locationByAtco?.[0];
   if (!location?.departures) return [];
 
-  let filteredDepartures = location.departures
-    .filter((departure) => departure.trip && departure.timings);
+  let filteredDepartures = location.departures.filter(
+    (departure) => departure.trip && departure.timings,
+  );
 
   if (filter) {
     filteredDepartures = filteredDepartures.filter((departure) => {
       if (departure.trip.destinationDisplay === "Terminates Here") return true;
 
       return filter.services.some((service) => {
-
-        const thisStopIndex = service.tramStops.findIndex((tramStop) => tramStop.atcoCode === location.atcoCode);
-        const destinationStopIndex = service.tramStops.findIndex((tramStop) => tramStop.name === departure.trip.destinationDisplay);
+        const thisStopIndex = service.tramStops.findIndex(
+          (tramStop) => tramStop.atcoCode === location.atcoCode,
+        );
+        const destinationStopIndex = service.tramStops.findIndex(
+          (tramStop) => tramStop.name === departure.trip.destinationDisplay,
+        );
 
         if (thisStopIndex < 0 || destinationStopIndex < 0) return false;
 
@@ -88,11 +93,10 @@ export const transformGetTrams = (
     });
   }
 
-  return filteredDepartures
-    .map((departure) => ({
-      carriages: departure.trip.carriages,
-      destinationDisplay: departure.trip.destinationDisplay,
-      status: departure.timings.status,
-      due: departure.timings.wait,
-    }));
+  return filteredDepartures.map((departure) => ({
+    carriages: departure.trip.carriages,
+    destinationDisplay: departure.trip.destinationDisplay,
+    status: departure.timings.status,
+    due: departure.timings.wait,
+  }));
 };

@@ -39,7 +39,7 @@ describe("getTrams integration test", () => {
     const result = (await handler(event)) as APIGatewayProxyStructuredResultV2;
 
     const body = JSON.parse(result.body as string);
-    
+
     // Only check shape if there are trams (there might not be any late at night)
     if (body.length > 0) {
       const tram = body[0];
@@ -55,11 +55,15 @@ describe("getTrams integration test", () => {
     const result = (await handler(event)) as APIGatewayProxyStructuredResultV2;
 
     const body = JSON.parse(result.body as string);
-    
+
     if (body.length > 0) {
       const tram = body[0];
       assert.strictEqual(typeof tram.carriages, "string", "carriages should be a string");
-      assert.strictEqual(typeof tram.destinationDisplay, "string", "destinationDisplay should be a string");
+      assert.strictEqual(
+        typeof tram.destinationDisplay,
+        "string",
+        "destinationDisplay should be a string",
+      );
       assert.strictEqual(typeof tram.status, "string", "status should be a string");
       assert.strictEqual(typeof tram.due, "number", "due should be a number");
     }

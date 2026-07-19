@@ -8,9 +8,10 @@
 import { promises as fs } from "node:fs";
 
 const processLine = async (
-  locations: { atcoCode: string, name: string }[],
+  locations: { atcoCode: string; name: string }[],
   id: string,
-  name: string) => {
+  name: string,
+) => {
   console.log(`Processing ${id}, ${name}`);
   const [colour, line] = id
     .split("_")
@@ -36,8 +37,10 @@ const processLine = async (
 };
 
 const main = async () => {
-  const searchLocationsResponse = await fetch("https://hsf41foww6.execute-api.us-east-1.amazonaws.com/search-locations");
-  const locations = (await searchLocationsResponse.json()) as { atcoCode: string, name: string }[];
+  const searchLocationsResponse = await fetch(
+    "https://hsf41foww6.execute-api.us-east-1.amazonaws.com/search-locations",
+  );
+  const locations = (await searchLocationsResponse.json()) as { atcoCode: string; name: string }[];
   await processLine(locations, "Green_Line", "Altrincham - Bury");
   await processLine(locations, "Pink_Line", "East Didsbury - Rochdale Town Centre");
   await processLine(locations, "Purple_Line", "Altrincham - Piccadilly/Etihad Campus");

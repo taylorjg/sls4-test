@@ -49,7 +49,7 @@ describe("searchLocations integration test", () => {
 
     const body = JSON.parse(result.body as string);
     const locationWithServices = body.find(
-      (loc: { services: unknown[] }) => loc.services.length > 0
+      (loc: { services: unknown[] }) => loc.services.length > 0,
     );
 
     if (locationWithServices) {

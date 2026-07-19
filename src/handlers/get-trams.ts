@@ -26,11 +26,14 @@ const checkTowardsParam = (towardsParam: string | undefined) => {
   if (!towardsParam) return null;
 
   switch (towardsParam) {
-    case "starts": return towardsParam;
-    case "ends": return towardsParam;
+    case "starts":
+      return towardsParam;
+    case "ends":
+      return towardsParam;
 
     // TODO: return 400 Bad Request
-    default: return null;
+    default:
+      return null;
   }
 };
 
