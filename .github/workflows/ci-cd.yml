@@ -1,0 +1,23 @@
+name: CI/CD
+on:
+  push:
+  pull_request:
+
+jobs:
+  run-checks:
+    name: Run lint check, typecheck, and build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Clean install
+        run: npm ci
+      - name: Run lint check
+        run: npm run lint
+      - name: Run typecheck
+        run: npm run typecheck
+      - name: Test
+        run: npm run test
